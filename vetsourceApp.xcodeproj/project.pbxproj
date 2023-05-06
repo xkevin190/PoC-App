@@ -7,18 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341A074F2A0539F50045A461 /* ButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A074E2A0539F50045A461 /* ButtonAction.swift */; };
+		341A07512A0547350045A461 /* NotificationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A07502A0547350045A461 /* NotificationCard.swift */; };
+		3427B3B52A06F6C200E29BBE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B42A06F6C200E29BBE /* View.swift */; };
+		3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B62A06FAFE00E29BBE /* PetProfile.swift */; };
 		34BCDA312A04582F0078D75D /* vetsourceAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */; };
 		34BCDA332A04582F0078D75D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA322A04582F0078D75D /* ContentView.swift */; };
 		34BCDA352A0458300078D75D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34BCDA342A0458300078D75D /* Assets.xcassets */; };
 		34BCDA382A0458300078D75D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34BCDA372A0458300078D75D /* Preview Assets.xcassets */; };
+		34BCDA422A0459A10078D75D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA412A0459A10078D75D /* Home.swift */; };
+		34BCDA462A045E9B0078D75D /* ButtomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA452A045E9B0078D75D /* ButtomTab.swift */; };
+		34BCDA492A0464430078D75D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA482A0464430078D75D /* Navigation.swift */; };
+		34BCDA4C2A0469480078D75D /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA4B2A0469480078D75D /* CornerRadius.swift */; };
+		34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA4D2A04781A0078D75D /* Notification.swift */; };
+		34BCDA502A04783E0078D75D /* AutoShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA4F2A04783E0078D75D /* AutoShip.swift */; };
+		34BCDA522A0478B20078D75D /* Find.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA512A0478B20078D75D /* Find.swift */; };
+		34BCDA542A0479200078D75D /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA532A0479200078D75D /* NavigationViewModel.swift */; };
+		34BCDA562A04899F0078D75D /* PetCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA552A04899F0078D75D /* PetCardItem.swift */; };
+		34BCDA582A0493950078D75D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA572A0493950078D75D /* Color.swift */; };
+		34BCDA5B2A04942D0078D75D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA5A2A04942D0078D75D /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		341A074E2A0539F50045A461 /* ButtonAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAction.swift; sourceTree = "<group>"; };
+		341A07502A0547350045A461 /* NotificationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCard.swift; sourceTree = "<group>"; };
+		3427B3B42A06F6C200E29BBE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		3427B3B62A06FAFE00E29BBE /* PetProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfile.swift; sourceTree = "<group>"; };
 		34BCDA2D2A04582F0078D75D /* vetsourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vetsourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vetsourceAppApp.swift; sourceTree = "<group>"; };
 		34BCDA322A04582F0078D75D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		34BCDA342A0458300078D75D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34BCDA372A0458300078D75D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		34BCDA412A0459A10078D75D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		34BCDA452A045E9B0078D75D /* ButtomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtomTab.swift; sourceTree = "<group>"; };
+		34BCDA482A0464430078D75D /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		34BCDA4B2A0469480078D75D /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		34BCDA4D2A04781A0078D75D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		34BCDA4F2A04783E0078D75D /* AutoShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShip.swift; sourceTree = "<group>"; };
+		34BCDA512A0478B20078D75D /* Find.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find.swift; sourceTree = "<group>"; };
+		34BCDA532A0479200078D75D /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
+		34BCDA552A04899F0078D75D /* PetCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardItem.swift; sourceTree = "<group>"; };
+		34BCDA572A0493950078D75D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		34BCDA5A2A04942D0078D75D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +81,12 @@
 		34BCDA2F2A04582F0078D75D /* vetsourceApp */ = {
 			isa = PBXGroup;
 			children = (
+				34BCDA592A04941C0078D75D /* Utils */,
+				34BCDA4A2A0469350078D75D /* Extensions */,
+				34BCDA442A045E7C0078D75D /* Components */,
+				34BCDA402A0458AA0078D75D /* Models */,
+				34BCDA3F2A0458A20078D75D /* ViewModel */,
+				34BCDA3E2A04587F0078D75D /* Views */,
 				34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */,
 				34BCDA322A04582F0078D75D /* ContentView.swift */,
 				34BCDA342A0458300078D75D /* Assets.xcassets */,
@@ -65,6 +101,63 @@
 				34BCDA372A0458300078D75D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		34BCDA3E2A04587F0078D75D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				34BCDA412A0459A10078D75D /* Home.swift */,
+				34BCDA482A0464430078D75D /* Navigation.swift */,
+				34BCDA4D2A04781A0078D75D /* Notification.swift */,
+				34BCDA4F2A04783E0078D75D /* AutoShip.swift */,
+				34BCDA512A0478B20078D75D /* Find.swift */,
+				3427B3B62A06FAFE00E29BBE /* PetProfile.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		34BCDA3F2A0458A20078D75D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				34BCDA532A0479200078D75D /* NavigationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		34BCDA402A0458AA0078D75D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		34BCDA442A045E7C0078D75D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				34BCDA552A04899F0078D75D /* PetCardItem.swift */,
+				34BCDA452A045E9B0078D75D /* ButtomTab.swift */,
+				341A074E2A0539F50045A461 /* ButtonAction.swift */,
+				341A07502A0547350045A461 /* NotificationCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		34BCDA4A2A0469350078D75D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34BCDA4B2A0469480078D75D /* CornerRadius.swift */,
+				34BCDA572A0493950078D75D /* Color.swift */,
+				3427B3B42A06F6C200E29BBE /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		34BCDA592A04941C0078D75D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				34BCDA5A2A04942D0078D75D /* Colors.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +230,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3427B3B52A06F6C200E29BBE /* View.swift in Sources */,
+				34BCDA562A04899F0078D75D /* PetCardItem.swift in Sources */,
+				34BCDA462A045E9B0078D75D /* ButtomTab.swift in Sources */,
+				34BCDA4C2A0469480078D75D /* CornerRadius.swift in Sources */,
 				34BCDA332A04582F0078D75D /* ContentView.swift in Sources */,
+				34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */,
+				34BCDA582A0493950078D75D /* Color.swift in Sources */,
+				3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */,
+				34BCDA422A0459A10078D75D /* Home.swift in Sources */,
+				341A07512A0547350045A461 /* NotificationCard.swift in Sources */,
+				341A074F2A0539F50045A461 /* ButtonAction.swift in Sources */,
 				34BCDA312A04582F0078D75D /* vetsourceAppApp.swift in Sources */,
+				34BCDA5B2A04942D0078D75D /* Colors.swift in Sources */,
+				34BCDA542A0479200078D75D /* NavigationViewModel.swift in Sources */,
+				34BCDA502A04783E0078D75D /* AutoShip.swift in Sources */,
+				34BCDA522A0478B20078D75D /* Find.swift in Sources */,
+				34BCDA492A0464430078D75D /* Navigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +390,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevin.habitsIOS.vetsourceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -311,9 +422,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevin.habitsIOS.vetsourceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

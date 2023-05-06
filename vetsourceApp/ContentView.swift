@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Navigation()
     }
+}
+
+
+struct SizeScreens {
+    static var ScreenWidth = UIScreen.main.bounds.width
+    static var ScreenHeight =  UIScreen.main.bounds.height
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
