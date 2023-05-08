@@ -8,46 +8,39 @@
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject var petModel: PetViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .top) {
-                Color.white
-                Image("headerHome").resizable().frame(height: SizeScreens.ScreenHeight * 0.4)
-                
-                VStack {
-                    ScrollView {
-                        
-                        NavigationLink(destination: PetProfile(), label: {
-                            PetCardItem(title: "Mia", date: "10/02/2018", orders: 3, image: "dog").padding(.top, 40)
-                        })
-                        
-                        
-                        NavigationLink(destination: PetProfile(), label: {
-                            PetCardItem(title: "Daisy", date: "11/03/2020", orders: 3, image: "cat").padding(.top)
-
-                        })
-                            
-                        NavigationLink(destination: PetProfile(), label: {
-                            PetCardItem(title: "Poppy", date: "01/02/2019", orders: 3, image: "dog2").padding(.top)
-                        })
+        
+        ZStack(alignment: .top) {
+            Color.white
+            Image("headerHome").resizable().frame(height: SizeScreens.ScreenHeight * 0.4)
+            VStack {
+                ScrollView {
+                    ForEach(petModel.pets) { pet in
+                        NavigationLink(destination: PetProfile(petSelected: pet), label: {
+                            PetCardItem(title: pet.name, date: pet.age, orders: pet.orders, image: pet.image).padding(.top)
+                        }).environmentObject(petModel)
                     }
-                    
-                    Spacer()
-                    
                 }
-                .frame(height: SizeScreens.ScreenHeight * 0.91)
-                .safeAreaInset(edge: .top){}
+                Spacer()
             }
-            .ignoresSafeArea()
-            .navigationTitle("Your pets")
-            .frame(height: SizeScreens.ScreenHeight)
+            .frame(height: SizeScreens.ScreenHeight * 0.91)
+            .safeAreaInset(edge: .top){}
         }
+        .onAppear() {
+            print(petModel)
+        }
+        .ignoresSafeArea()
+        .navigationTitle("Your pets")
+        .frame(height: SizeScreens.ScreenHeight)
+        .padding(.top, Device.screenHeight * 0.05)
+        
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home().environmentObject(PetViewModel())
     }
 }

@@ -11,6 +11,12 @@
 		341A07512A0547350045A461 /* NotificationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A07502A0547350045A461 /* NotificationCard.swift */; };
 		3427B3B52A06F6C200E29BBE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B42A06F6C200E29BBE /* View.swift */; };
 		3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B62A06FAFE00E29BBE /* PetProfile.swift */; };
+		3459585D2A0926CE00995B1E /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3459585C2A0926CE00995B1E /* PetModel.swift */; };
+		3459585F2A0928B000995B1E /* PetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3459585E2A0928B000995B1E /* PetViewModel.swift */; };
+		345958612A09301700995B1E /* CardInProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958602A09301700995B1E /* CardInProfile.swift */; };
+		345958632A093E5B00995B1E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958622A093E5B00995B1E /* EditProfile.swift */; };
+		345958652A095F9D00995B1E /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958642A095F9D00995B1E /* SmallCard.swift */; };
+		345958672A09660F00995B1E /* EditSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958662A09660F00995B1E /* EditSection.swift */; };
 		34BCDA312A04582F0078D75D /* vetsourceAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */; };
 		34BCDA332A04582F0078D75D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA322A04582F0078D75D /* ContentView.swift */; };
 		34BCDA352A0458300078D75D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34BCDA342A0458300078D75D /* Assets.xcassets */; };
@@ -33,6 +39,12 @@
 		341A07502A0547350045A461 /* NotificationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCard.swift; sourceTree = "<group>"; };
 		3427B3B42A06F6C200E29BBE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		3427B3B62A06FAFE00E29BBE /* PetProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfile.swift; sourceTree = "<group>"; };
+		3459585C2A0926CE00995B1E /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
+		3459585E2A0928B000995B1E /* PetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewModel.swift; sourceTree = "<group>"; };
+		345958602A09301700995B1E /* CardInProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInProfile.swift; sourceTree = "<group>"; };
+		345958622A093E5B00995B1E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		345958642A095F9D00995B1E /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCard.swift; sourceTree = "<group>"; };
+		345958662A09660F00995B1E /* EditSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSection.swift; sourceTree = "<group>"; };
 		34BCDA2D2A04582F0078D75D /* vetsourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vetsourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vetsourceAppApp.swift; sourceTree = "<group>"; };
 		34BCDA322A04582F0078D75D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +124,7 @@
 				34BCDA4F2A04783E0078D75D /* AutoShip.swift */,
 				34BCDA512A0478B20078D75D /* Find.swift */,
 				3427B3B62A06FAFE00E29BBE /* PetProfile.swift */,
+				345958622A093E5B00995B1E /* EditProfile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				34BCDA532A0479200078D75D /* NavigationViewModel.swift */,
+				3459585E2A0928B000995B1E /* PetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -127,6 +141,7 @@
 		34BCDA402A0458AA0078D75D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3459585C2A0926CE00995B1E /* PetModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +153,9 @@
 				34BCDA452A045E9B0078D75D /* ButtomTab.swift */,
 				341A074E2A0539F50045A461 /* ButtonAction.swift */,
 				341A07502A0547350045A461 /* NotificationCard.swift */,
+				345958602A09301700995B1E /* CardInProfile.swift */,
+				345958642A095F9D00995B1E /* SmallCard.swift */,
+				345958662A09660F00995B1E /* EditSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -235,7 +253,12 @@
 				34BCDA462A045E9B0078D75D /* ButtomTab.swift in Sources */,
 				34BCDA4C2A0469480078D75D /* CornerRadius.swift in Sources */,
 				34BCDA332A04582F0078D75D /* ContentView.swift in Sources */,
+				3459585F2A0928B000995B1E /* PetViewModel.swift in Sources */,
+				3459585D2A0926CE00995B1E /* PetModel.swift in Sources */,
+				345958652A095F9D00995B1E /* SmallCard.swift in Sources */,
 				34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */,
+				345958632A093E5B00995B1E /* EditProfile.swift in Sources */,
+				345958612A09301700995B1E /* CardInProfile.swift in Sources */,
 				34BCDA582A0493950078D75D /* Color.swift in Sources */,
 				3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */,
 				34BCDA422A0459A10078D75D /* Home.swift in Sources */,
@@ -243,6 +266,7 @@
 				341A074F2A0539F50045A461 /* ButtonAction.swift in Sources */,
 				34BCDA312A04582F0078D75D /* vetsourceAppApp.swift in Sources */,
 				34BCDA5B2A04942D0078D75D /* Colors.swift in Sources */,
+				345958672A09660F00995B1E /* EditSection.swift in Sources */,
 				34BCDA542A0479200078D75D /* NavigationViewModel.swift in Sources */,
 				34BCDA502A04783E0078D75D /* AutoShip.swift in Sources */,
 				34BCDA522A0478B20078D75D /* Find.swift in Sources */,
