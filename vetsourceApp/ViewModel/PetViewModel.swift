@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class PetViewModel: ObservableObject {
    @Published var pets: [Pet] = []
@@ -53,6 +54,19 @@ class PetViewModel: ObservableObject {
             pets[index].weight = newWeight
             newWeight = ""
         }
+    }
+    
+    
+    
+    func getPickerValue () -> [PickerModel] {
+        
+        var value: [PickerModel] = []
+        
+        pets.forEach { pet in
+            value.append(PickerModel(id: pet.id, name: pet.name))
+        }
+        
+        return value
     }
     
     

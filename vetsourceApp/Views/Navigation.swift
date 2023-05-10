@@ -27,15 +27,18 @@ struct Navigation: View {
                         Home()
                     }
                 }
-                .frame(width: SizeScreens.ScreenWidth , height: SizeScreens.ScreenHeight * 0.7)
-                .background(.red)
+                .frame(width: SizeScreens.ScreenWidth , height: SizeScreens.ScreenHeight * 0.8)
+                .background(.white)
                 .padding(.top, Device.screenHeight * 0.2)
-                
-                ButtomTab(navigationModel: navigationModel).padding(.bottom, Device.screenHeight * 0.1)
+
+                ButtomTab(navigationModel: navigationModel).padding(.bottom, Device.screenHeight * 0.1).shadow(color: .black.opacity(0.3), radius: 3)
             }
-            .shadow(color: .black.opacity(0.3), radius: 3)
+            
         }.environmentObject(PetModel)
     }
+    
+    
+    
 }
 
 struct SwiftUIView_Previews: PreviewProvider {

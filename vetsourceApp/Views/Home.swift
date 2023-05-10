@@ -28,11 +28,7 @@ struct Home: View {
             .frame(height: SizeScreens.ScreenHeight * 0.91)
             .safeAreaInset(edge: .top){}
         }
-        .onAppear() {
-            print(petModel)
-        }
         .ignoresSafeArea()
-        .navigationTitle("Your pets")
         .frame(height: SizeScreens.ScreenHeight)
         .padding(.top, Device.screenHeight * 0.05)
         
