@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AutoShip: View {
     @EnvironmentObject var petModel: PetViewModel
+    @State var edit = false;
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -17,23 +18,26 @@ struct AutoShip: View {
                 HStack() {
                     Text("Shopping for:").foregroundColor(Colors.subtitle)
                     Spacer()
-                    PickerPets(items: petModel.getPickerValue(), action:  { value in
-                        print(value)
-                    })
+                    PickerPets(items: petModel.getPickerValue(), action:  {value in })
                 }
                 .padding(.horizontal)
                 .padding(.top, Device.screenHeight * 0.08)
                 VStack(alignment: .leading) {
-                    Text("AutoShip").font(.largeTitle).padding(.bottom).fontWeight(.semibold).padding(.leading)
+                    Text("AutoShip").font(.largeTitle).padding(.bottom).fontWeight(.semibold).padding(.leading).foregroundColor(.black)
                     Text("Schedule regular deliveries right to your front door. Learn more")
                         .padding(.horizontal)
                         .foregroundColor(Colors.subtitle)
                 }.padding(.top, Device.screenHeight * 0.03)
-
-                AutoShipCard().padding()
-                
+                AutoShipCard(action: {
+                    edit.toggle()
+                }).padding()
             }
-            
+            .background(
+                NavigationLink(
+                    destination: UpdateDose(),
+                    isActive: $edit,
+                    label: { EmptyView() })
+            )
         }
         .ignoresSafeArea()
         .frame(height: SizeScreens.ScreenHeight)

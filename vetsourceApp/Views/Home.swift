@@ -14,7 +14,7 @@ struct Home: View {
         
         ZStack(alignment: .top) {
             Color.white
-            Image("headerHome").resizable().frame(height: SizeScreens.ScreenHeight * 0.4)
+            Image("HeaderHome").resizable().frame(height: SizeScreens.ScreenHeight * 0.4)
             VStack {
                 ScrollView {
                     ForEach(petModel.pets) { pet in

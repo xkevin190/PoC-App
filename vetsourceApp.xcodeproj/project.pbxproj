@@ -34,6 +34,7 @@
 		34BCDA562A04899F0078D75D /* PetCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA552A04899F0078D75D /* PetCardItem.swift */; };
 		34BCDA582A0493950078D75D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA572A0493950078D75D /* Color.swift */; };
 		34BCDA5B2A04942D0078D75D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA5A2A04942D0078D75D /* Colors.swift */; };
+		34DDCA572A0D79B000C34016 /* UpdateDose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDCA562A0D79B000C34016 /* UpdateDose.swift */; };
 		34EA79222A0AB2EB0015BE9A /* PickerPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA79212A0AB2EB0015BE9A /* PickerPets.swift */; };
 		34EA79242A0ABBBD0015BE9A /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA79232A0ABBBD0015BE9A /* Border.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		34BCDA552A04899F0078D75D /* PetCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardItem.swift; sourceTree = "<group>"; };
 		34BCDA572A0493950078D75D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		34BCDA5A2A04942D0078D75D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		34DDCA562A0D79B000C34016 /* UpdateDose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDose.swift; sourceTree = "<group>"; };
 		34EA79212A0AB2EB0015BE9A /* PickerPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPets.swift; sourceTree = "<group>"; };
 		34EA79232A0ABBBD0015BE9A /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 				34BCDA512A0478B20078D75D /* Find.swift */,
 				3427B3B62A06FAFE00E29BBE /* PetProfile.swift */,
 				345958622A093E5B00995B1E /* EditProfile.swift */,
+				34DDCA562A0D79B000C34016 /* UpdateDose.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				3459585D2A0926CE00995B1E /* PetModel.swift in Sources */,
 				345958652A095F9D00995B1E /* SmallCard.swift in Sources */,
 				34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */,
+				34DDCA572A0D79B000C34016 /* UpdateDose.swift in Sources */,
 				345958632A093E5B00995B1E /* EditProfile.swift in Sources */,
 				345958612A09301700995B1E /* CardInProfile.swift in Sources */,
 				34BCDA582A0493950078D75D /* Color.swift in Sources */,

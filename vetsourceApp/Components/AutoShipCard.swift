@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct AutoShipCard: View {
-    
+    var action: ()-> Void
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
@@ -64,7 +64,7 @@ struct AutoShipCard: View {
                 }
             }
             ButtonAction(buttonColor: .white, borderColor: .black, textColor: .black, text: "View suggestion", action: {
-                
+                action()
             })
         }
         .frame(width: Device.screenWidth * 0.8)
@@ -81,6 +81,6 @@ struct AutoShipCard: View {
 
 struct AutoShipCard_Previews: PreviewProvider {
     static var previews: some View {
-        AutoShipCard()
+        AutoShipCard(action: {})
     }
 }
