@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct Navigation: View {
     @ObservedObject var navigationModel = NavigationModel()
     @ObservedObject var PetModel = PetViewModel()
+    
+    @ObservedObject var notificationModel = NotificationModel()
+    
+    
     var body: some View {
         NavigationStack {
             VStack{
@@ -27,14 +32,19 @@ struct Navigation: View {
                         Home()
                     }
                 }
+                
                 .frame(width: SizeScreens.ScreenWidth , height: SizeScreens.ScreenHeight * 0.8)
                 .background(.white)
                 .padding(.top, Device.screenHeight * 0.2)
-
+                
                 ButtomTab(navigationModel: navigationModel).padding(.bottom, Device.screenHeight * 0.1).shadow(color: .black.opacity(0.3), radius: 3)
             }
             
-        }.environmentObject(PetModel)
+        }
+        .environmentObject(PetModel)
+        .onAppear() {
+            notificationModel.requestPermision()
+        }
     }
     
     

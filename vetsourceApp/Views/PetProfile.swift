@@ -29,17 +29,16 @@ struct PetProfile: View {
         }
         .ignoresSafeArea()
         .background(
-            NavigationLink(                 // << here !!
+            NavigationLink(
                 destination: EditProfile(pet: petSelected),
                 isActive: $edit,
                 label: { EmptyView() })
         )
-        
     }
 }
 
 struct PetProfile_Previews: PreviewProvider {
     static var previews: some View {
-        PetProfile(petSelected: Pet(name: "Mia", age: "10/02/2018", weight: "5", orders: 3, image: "dog"))
+        PetProfile(petSelected: Pet(name: "Mia", age: "10/02/2018", weight: "5", orders: 3, image: "dog", Product: []))
     }
 }
