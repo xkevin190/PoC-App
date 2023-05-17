@@ -39,6 +39,9 @@
 		34DDCA592A0D9D5D00C34016 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DDCA582A0D9D5D00C34016 /* Product.swift */; };
 		34EA79222A0AB2EB0015BE9A /* PickerPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA79212A0AB2EB0015BE9A /* PickerPets.swift */; };
 		34EA79242A0ABBBD0015BE9A /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA79232A0ABBBD0015BE9A /* Border.swift */; };
+		34FCE8DE2A13BEEE000E992D /* CardInfoProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FCE8DD2A13BEEE000E992D /* CardInfoProfile.swift */; };
+		34FCE8E02A13F15A000E992D /* InfoCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FCE8DF2A13F15A000E992D /* InfoCardModel.swift */; };
+		34FCE8E22A144ACF000E992D /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FCE8E12A144ACF000E992D /* Notify.swift */; };
 		34FE7BC82A0E73B900E4DC72 /* ProductStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE7BC72A0E73B900E4DC72 /* ProductStatus.swift */; };
 		34FE7BCB2A0ECC7E00E4DC72 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 34FE7BCA2A0ECC7E00E4DC72 /* AlertToast */; };
 		34FE7BCF2A0ECE7300E4DC72 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE7BCE2A0ECE7300E4DC72 /* CustomAlert.swift */; };
@@ -78,6 +81,9 @@
 		34DDCA582A0D9D5D00C34016 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		34EA79212A0AB2EB0015BE9A /* PickerPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPets.swift; sourceTree = "<group>"; };
 		34EA79232A0ABBBD0015BE9A /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		34FCE8DD2A13BEEE000E992D /* CardInfoProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoProfile.swift; sourceTree = "<group>"; };
+		34FCE8DF2A13F15A000E992D /* InfoCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardModel.swift; sourceTree = "<group>"; };
+		34FCE8E12A144ACF000E992D /* Notify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 		34FE7BC72A0E73B900E4DC72 /* ProductStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStatus.swift; sourceTree = "<group>"; };
 		34FE7BCE2A0ECE7300E4DC72 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +173,8 @@
 				34398E552A0B4AE800E963CB /* File.swift */,
 				34DDCA582A0D9D5D00C34016 /* Product.swift */,
 				34FE7BC72A0E73B900E4DC72 /* ProductStatus.swift */,
+				34FCE8DF2A13F15A000E992D /* InfoCardModel.swift */,
+				34FCE8E12A144ACF000E992D /* Notify.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 				34EA79212A0AB2EB0015BE9A /* PickerPets.swift */,
 				34398E532A0B047100E963CB /* AutoShipCard.swift */,
 				34FE7BCE2A0ECE7300E4DC72 /* CustomAlert.swift */,
+				34FCE8DD2A13BEEE000E992D /* CardInfoProfile.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -292,9 +301,11 @@
 				3459585F2A0928B000995B1E /* PetViewModel.swift in Sources */,
 				3459585D2A0926CE00995B1E /* PetModel.swift in Sources */,
 				345958652A095F9D00995B1E /* SmallCard.swift in Sources */,
+				34FCE8E02A13F15A000E992D /* InfoCardModel.swift in Sources */,
 				34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */,
 				34DDCA572A0D79B000C34016 /* UpdateDose.swift in Sources */,
 				345958632A093E5B00995B1E /* EditProfile.swift in Sources */,
+				34FCE8DE2A13BEEE000E992D /* CardInfoProfile.swift in Sources */,
 				345958612A09301700995B1E /* CardInProfile.swift in Sources */,
 				34BCDA582A0493950078D75D /* Color.swift in Sources */,
 				3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */,
@@ -310,6 +321,7 @@
 				34398E542A0B047100E963CB /* AutoShipCard.swift in Sources */,
 				34FE7BCF2A0ECE7300E4DC72 /* CustomAlert.swift in Sources */,
 				34BCDA542A0479200078D75D /* NavigationViewModel.swift in Sources */,
+				34FCE8E22A144ACF000E992D /* Notify.swift in Sources */,
 				34BCDA502A04783E0078D75D /* AutoShip.swift in Sources */,
 				34EA79222A0AB2EB0015BE9A /* PickerPets.swift in Sources */,
 				34FE7BC82A0E73B900E4DC72 /* ProductStatus.swift in Sources */,

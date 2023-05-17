@@ -37,6 +37,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home().environmentObject(PetViewModel())
+        Home().environmentObject(PetViewModel(notification: NotificationModel()))
     }
 }

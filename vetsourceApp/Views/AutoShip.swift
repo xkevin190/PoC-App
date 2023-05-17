@@ -76,6 +76,6 @@ struct AutoShip: View {
 
 struct AutoShip_Previews: PreviewProvider {
     static var previews: some View {
-        AutoShip().environmentObject(PetViewModel())
+        AutoShip().environmentObject(PetViewModel(notification: NotificationModel()))
     }
 }

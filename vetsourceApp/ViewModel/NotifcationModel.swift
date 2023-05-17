@@ -11,7 +11,12 @@ import UIKit
 
 
 class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
-    var permision:Bool = false
+   var permision:Bool = false
+   @Published var  notify: [Notify] = []
+   @Published var redirectToProfile = false
+   @Published var redirectToDataShip = false
+   @Published var idPet: String = ""
+    
     
     
     func requestPermision () {
@@ -27,16 +32,16 @@ class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDel
             }
         }
     }
-
     
     
-    func sendLocalNotification () {
+    
+    func sendLocalNotification (title: String, subtitle: String, action: String, petId: UUID) {
         let content = UNMutableNotificationContent()
         
-        content.title = "firts test of notification"
-        content.subtitle = "they look hungry"
+        content.title = title
+        content.subtitle = subtitle
         content.sound = UNNotificationSound.default
-        content.userInfo = ["action": "openApp"]
+        content.userInfo = ["action": action, "id": petId.uuidString ]
 
          
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
@@ -46,6 +51,11 @@ class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDel
 
         
         UNUserNotificationCenter.current().add(request)
+        
+        let actionMessage: String = action == "toProfile" ? "Go to Pet Profile" : "Update Dose"
+        notify.append(
+            Notify(title: title, descripton: subtitle, action: actionMessage, ButtonAction: true, petID: petId )
+        )
     }
     
     
@@ -56,7 +66,10 @@ class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDel
         
         // Check if the notification was triggered by a user click
         if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
-            print("executed!!!", userInfo)
+            if(userInfo["action"] as! String == "toProfile") {
+                redirectToProfile = true
+                idPet = userInfo["id"] as! String
+            }
         }
         
         completionHandler()

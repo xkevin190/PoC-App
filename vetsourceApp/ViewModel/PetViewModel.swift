@@ -17,44 +17,13 @@ class PetViewModel: ObservableObject {
     @Published var edit: Bool = false;
     @Published var productToEdit = UUID()
     @Published var toastShow = false;
+    var notificationService : NotificationModel
     
-    init() {
-        self.pets.append(
-            Pet(
-                name: "Mia",
-                age: "10/02/2018",
-                weight: "5",
-                orders: 3,
-                image: "dog",
-                Product: [Product(
-                    name: "GlycoFLEX® 2 Bite-Sized Chews",
-                    quantity: 2,
-                    size: "Dog",
-                    pakage: "120 chewables",
-                    image: "product2",
-                    productStatus: ProductStatus(currentStatus: status.updateRequired, reason: "Your pet’s weight was changed in their pet profile, and your product needs a dose update to ensure the AutoShip is sent on time.", nexQuantity: 2),
-                    nextAutShip: "25/05/2023",
-                    frecuency: "montly"
-                )]
-            ))
-        self.pets.append(
-            Pet(
-                name: "Daisy",
-                age: "11/03/2020",
-                weight: "2",
-                orders: 1,
-                image: "cat",
-                Product: [Product(
-                    name: "Phycox®",
-                    quantity: 1,
-                    size: "Small bites",
-                    pakage: "120 chewables", image: "product1",
-                    productStatus: ProductStatus(currentStatus: status.active, reason: "", nexQuantity: 0),
-                    nextAutShip: "27/05/2023",
-                    frecuency: "montly")
-                ]
-            ))
-        self.pets.append(Pet(name: "Poppy", age: "11/03/2018", weight: "4", orders: 0, image: "dog2", Product: []))
+    init(notification: NotificationModel) {
+        self.pets = Pet.setPets
+        self.notificationService = notification
+        
+        notificationService.sendLocalNotification(title: "Update \(pets[1].name)'s weight" , subtitle: "\(pets[1].name) is Growing fast, Update her wifht to match their orders", action: "toProfile", petId: pets[1].id)
     }
     
     
@@ -114,7 +83,7 @@ class PetViewModel: ObservableObject {
         }
         
         if result != nil {
-            return pets[result!].Product
+            return pets[result!].product
         }
         
         return []
@@ -126,11 +95,11 @@ class PetViewModel: ObservableObject {
         let result = pets.firstIndex {
             $0.id == petSelected
         }
-
+        
         if result != nil {
-            let _products =  pets[result!].Product
-
-           let index = _products.firstIndex { item in
+            let _products =  pets[result!].product
+            
+            let index = _products.firstIndex { item in
                 item.id == productToEdit
             }
             
@@ -150,11 +119,11 @@ class PetViewModel: ObservableObject {
         let result = pets.firstIndex {
             $0.id == petSelected
         }
-
+        
         if result != nil {
-            var _products =  pets[result!].Product
-
-           let index = _products.firstIndex { item in
+            var _products =  pets[result!].product
+            
+            let index = _products.firstIndex { item in
                 item.id == productToEdit
             }
             
@@ -164,10 +133,65 @@ class PetViewModel: ObservableObject {
                 newPetData.productStatus = ProductStatus(currentStatus: status.active, reason: "", nexQuantity: 0)
                 
                 
-                pets[result!].Product[index!] = newPetData
+                pets[result!].product[index!] = newPetData
             }
             
         }
+    }
+    
+    
+    func age(birthdate: Date) -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        let ageComponents = calendar.dateComponents([.year], from: birthdate, to: now)
+        return ageComponents.year ?? 0
+    }
+    
+    
+    var isNecesaryFixSomething: InfoCardModel? {
+        
+        let indexPet = pets.firstIndex { pet in
+            pet.id == self.petSelected
+        }
+        
+        
+        guard indexPet != nil else {
+            return nil
+        }
+        
+        let pet = pets[indexPet!]
+        let dateString = pets[indexPet!].age
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let date = dateFormatter.date(from: dateString)
+        let _age = age(birthdate: date!);
+        print("enter here!!!!", _age <=  Int(pet.weight)! )
+        if(_age >=  Int(pet.weight)! ) {
+            return InfoCardModel(name: "Fix Weight", incomingOrder: "\(pet.name)'s weight does not correspond to her age please update her weight", important: true, action: true)
+        }
+
+        return nil
+    }
+    
+    
+    var incomingsOrders: InfoCardModel?  {
+        let indexPet = pets.firstIndex {pet in
+            pet.id == self.petSelected
+        }
+        
+        
+        guard indexPet != nil else {
+            return nil
+        }
+        
+        let _pet = pets[indexPet!]
+        if (!_pet.product.isEmpty){
+            
+            return InfoCardModel(name: "Incoming Order", incomingOrder: _pet.product[0].name ,date: _pet.product[0].nextAutShip, time: "12:00 PM", important: false, action: false)
+        }
+        
+        return nil;
     }
     
     

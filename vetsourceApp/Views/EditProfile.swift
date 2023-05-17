@@ -51,6 +51,6 @@ struct EditProfile: View {
 
 struct EditProfile_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfile(pet: Pet.preview)
+        EditProfile(pet: Pet.preview).environmentObject(PetViewModel(notification: NotificationModel()))
     }
 }
