@@ -13,9 +13,7 @@ import UIKit
 class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
    var permision:Bool = false
    @Published var  notify: [Notify] = []
-   @Published var redirectToProfile = false
-   @Published var redirectToDataShip = false
-   @Published var idPet: String = ""
+   @Published var notifyRedirect = Redirect()
     
     
     
@@ -67,8 +65,10 @@ class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDel
         // Check if the notification was triggered by a user click
         if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
             if(userInfo["action"] as! String == "toProfile") {
-                redirectToProfile = true
-                idPet = userInfo["id"] as! String
+                let _idPet = userInfo["id"] as! String
+                let _redirectToProfile = true
+                
+                notifyRedirect = Redirect(idPet: _idPet, redirectToProfile:  _redirectToProfile)
             }
         }
         

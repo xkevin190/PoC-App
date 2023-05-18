@@ -33,33 +33,38 @@ struct Navigation: View {
                     case Icons.user.rawValue:
                         Home()
                     case Icons.notification.rawValue:
-                        Notification(natification: notificationModel)
+                        Notification(notification: notificationModel)
                     case Icons.find.rawValue:
                         Find()
                     case Icons.car.rawValue:
-                        AutoShip()
+                        AutoShip(petSelected: PetModel.pets[0])
                     default:
                         Home()
                     }
                 }
-
+                .background() {
+                    NavigationLink(
+                        destination: PetProfile(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
+                        isActive: $notificationModel.notifyRedirect.redirectToProfile,
+                        label: { EmptyView() })
+                    
+                    NavigationLink(
+                        destination: AutoShip(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
+                        isActive: $notificationModel.notifyRedirect.redirectToDose,
+                        label: { EmptyView() })
+                }
                 .frame(width: SizeScreens.ScreenWidth , height: SizeScreens.ScreenHeight * 0.8)
                 .background(.white)
                 .padding(.top, Device.screenHeight * 0.2)
-                .background() {
-                    NavigationLink(
-                        destination: PetProfile(petSelected: PetModel.pets[1]),
-                        isActive: $notificationModel.redirectToProfile,
-                        label: { EmptyView() })
-                }
-
+                
+                
                 ButtomTab(navigationModel: navigationModel).padding(.bottom, Device.screenHeight * 0.1).shadow(color: .black.opacity(0.3), radius: 3)
             }
         }
         .environmentObject(PetModel)
         .onAppear() {
             notificationModel.requestPermision()
-          
+            
         }
     }
     

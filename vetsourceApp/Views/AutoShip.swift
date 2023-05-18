@@ -10,7 +10,13 @@ import SwiftUI
 struct AutoShip: View {
     @EnvironmentObject var petModel: PetViewModel
     @State private var showToast = false
-
+    var petSelected: Pet
+    
+    
+    init(petSelected: Pet) {
+        self.petSelected = petSelected
+    }
+    
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -19,7 +25,7 @@ struct AutoShip: View {
                 HStack() {
                     Text("Shopping for:").foregroundColor(Colors.subtitle)
                     Spacer()
-                    PickerPets(items: petModel.getPickerValue(), action:  {value in
+                    PickerPets(items: petModel.getPickerValue(), action:  { value in
                         
                         petModel.petSelected = value.id
                     })
@@ -33,14 +39,19 @@ struct AutoShip: View {
                         .foregroundColor(Colors.subtitle)
                 }.padding(.top, Device.screenHeight * 0.03)
                 
-                ForEach(petModel.getPetSelected) { product in
-                    AutoShipCard(action: {
-                        petModel.edit.toggle()
-                        petModel.productToEdit = product.id
-                        
-                    }, product: product).padding()
-                }
                 
+                ForEach(petModel.getPetSelected(id: petSelected != nil ? petModel.pets[1].id :  petModel.pets[0].id)) { product in
+                        AutoShipCard(action: {
+                            petModel.edit.toggle()
+                            petModel.productToEdit = product.id
+
+                        }, product: product).padding()
+                    }
+                
+                
+            }
+            .onAppear() {
+                petModel.petSelected = UUID(uuidString: petModel.notificationService.notifyRedirect.idPet) ?? UUID()
             }
             .background(
                 NavigationLink(
@@ -76,6 +87,6 @@ struct AutoShip: View {
 
 struct AutoShip_Previews: PreviewProvider {
     static var previews: some View {
-        AutoShip().environmentObject(PetViewModel(notification: NotificationModel()))
+        AutoShip(petSelected: Pet.preview).environmentObject(PetViewModel(notification: NotificationModel()))
     }
 }

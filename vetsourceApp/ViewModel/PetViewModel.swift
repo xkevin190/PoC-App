@@ -17,6 +17,7 @@ class PetViewModel: ObservableObject {
     @Published var edit: Bool = false;
     @Published var productToEdit = UUID()
     @Published var toastShow = false;
+    
     var notificationService : NotificationModel
     
     init(notification: NotificationModel) {
@@ -78,6 +79,19 @@ class PetViewModel: ObservableObject {
     
     
     var getPetSelected: [Product] {
+        let result = pets.firstIndex {
+            $0.id == petSelected
+        }
+        
+        if result != nil {
+            return pets[result!].product
+        }
+        
+        return []
+    }
+    
+    
+    func getPetSelected(id: UUID) -> [Product] {
         let result = pets.firstIndex {
             $0.id == petSelected
         }
@@ -166,7 +180,6 @@ class PetViewModel: ObservableObject {
         
         let date = dateFormatter.date(from: dateString)
         let _age = age(birthdate: date!);
-        print("enter here!!!!", _age <=  Int(pet.weight)! )
         if(_age >=  Int(pet.weight)! ) {
             return InfoCardModel(name: "Fix Weight", incomingOrder: "\(pet.name)'s weight does not correspond to her age please update her weight", important: true, action: true)
         }
@@ -195,4 +208,13 @@ class PetViewModel: ObservableObject {
     }
     
     
+    func getPet (id: String) -> Pet {
+        let indexPet = pets.firstIndex {pet in
+            pet.id.uuidString == id
+        }
+        if (indexPet != nil) {
+            return pets[indexPet!]
+        }
+        return pets[0]
+    }
 }

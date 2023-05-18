@@ -15,7 +15,8 @@ struct Home: View {
         ZStack(alignment: .top) {
             Color.white
             Image("HeaderHome").resizable().frame(height: SizeScreens.ScreenHeight * 0.4)
-            VStack {
+            VStack(alignment: .leading) {
+                Text("Your pets").font(.largeTitle).foregroundColor(.black).fontWeight(.bold)
                 ScrollView {
                     ForEach(petModel.pets) { pet in
                         NavigationLink(destination: PetProfile(petSelected: pet), label: {
@@ -25,7 +26,7 @@ struct Home: View {
                 }
                 Spacer()
             }
-            .frame(height: SizeScreens.ScreenHeight * 0.91)
+            .frame(height: SizeScreens.ScreenHeight * 0.95)
             .safeAreaInset(edge: .top){}
         }
         .ignoresSafeArea()

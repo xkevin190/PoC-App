@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Pet: Identifiable {
+struct Pet: Identifiable, Equatable {
+    static func == (lhs: Pet, rhs: Pet) -> Bool {
+       return  lhs.id == rhs.id
+    }
+    
     var id = UUID()
     var name: String
     var age: String

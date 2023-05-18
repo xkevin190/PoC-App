@@ -60,7 +60,9 @@ struct NotificationCard: View {
                 
                 if button {
                     ButtonAction(buttonColor: Color.white, borderColor: Color.black, textColor: Colors.title, text: buttonTitle, action: {
-                        print("aqui!!")
+                        if action != nil {
+                            action!()
+                        }
                     })
                         .padding(.bottom, SizeScreens.ScreenHeight * 0.01)
                 }

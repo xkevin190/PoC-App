@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		341A074F2A0539F50045A461 /* ButtonAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A074E2A0539F50045A461 /* ButtonAction.swift */; };
 		341A07512A0547350045A461 /* NotificationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A07502A0547350045A461 /* NotificationCard.swift */; };
+		341B44942A1592A300F5E934 /* Redirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B44932A1592A300F5E934 /* Redirect.swift */; };
 		3427B3B52A06F6C200E29BBE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B42A06F6C200E29BBE /* View.swift */; };
 		3427B3B72A06FAFE00E29BBE /* PetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427B3B62A06FAFE00E29BBE /* PetProfile.swift */; };
 		34398E542A0B047100E963CB /* AutoShipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34398E532A0B047100E963CB /* AutoShipCard.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		341A074E2A0539F50045A461 /* ButtonAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAction.swift; sourceTree = "<group>"; };
 		341A07502A0547350045A461 /* NotificationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCard.swift; sourceTree = "<group>"; };
+		341B44932A1592A300F5E934 /* Redirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redirect.swift; sourceTree = "<group>"; };
 		3427B3B42A06F6C200E29BBE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		3427B3B62A06FAFE00E29BBE /* PetProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfile.swift; sourceTree = "<group>"; };
 		34398E532A0B047100E963CB /* AutoShipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShipCard.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				34FE7BC72A0E73B900E4DC72 /* ProductStatus.swift */,
 				34FCE8DF2A13F15A000E992D /* InfoCardModel.swift */,
 				34FCE8E12A144ACF000E992D /* Notify.swift */,
+				341B44932A1592A300F5E934 /* Redirect.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				34FE7BC82A0E73B900E4DC72 /* ProductStatus.swift in Sources */,
 				34BCDA522A0478B20078D75D /* Find.swift in Sources */,
 				34BCDA492A0464430078D75D /* Navigation.swift in Sources */,
+				341B44942A1592A300F5E934 /* Redirect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct Notification: View {
     
-    var natification: NotificationModel;
+    @ObservedObject var notification: NotificationModel;
+    @EnvironmentObject var petModel: PetViewModel
+    
     var body: some View {
         ZStack {
             Color.white
@@ -18,9 +20,19 @@ struct Notification: View {
                 Text("Notifications").foregroundColor(.black).padding(.horizontal).font(.largeTitle)
 
                 ScrollView {
-                    ForEach(natification.notify){ value in
+                    ForEach(notification.notify){ value in
                         NotificationCard(title: value.title,
-                                         subtitle: value.descripton, button: true, titleButon: value.action, action: {}).padding(.bottom)
+                                         subtitle: value.descripton, button: true, titleButon: value.action, action: {
+                            
+                            self.notification.notifyRedirect.idPet = value.petID.uuidString
+                            if(value.action == "Go to Pet Profile") {
+                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToProfile: true)
+                            } else {
+                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToDose: true)
+                            }
+                            
+                            
+                        }).padding(.bottom)
                     }
                 }
             }
@@ -33,6 +45,6 @@ struct Notification: View {
 
 struct Notification_Previews: PreviewProvider {
     static var previews: some View {
-        Notification(natification: NotificationModel())
+        Notification(notification: NotificationModel())
     }
 }
