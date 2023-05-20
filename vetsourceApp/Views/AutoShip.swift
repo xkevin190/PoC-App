@@ -51,7 +51,7 @@ struct AutoShip: View {
                 
             }
             .onAppear() {
-                petModel.petSelected = UUID(uuidString: petModel.notificationService.notifyRedirect.idPet) ?? UUID()
+                petModel.petSelected = UUID(uuidString: petModel.notificationService.notifyRedirect.idPet) ?? petSelected.id
             }
             .background(
                 NavigationLink(

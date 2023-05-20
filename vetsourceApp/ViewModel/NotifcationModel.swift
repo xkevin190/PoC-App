@@ -64,11 +64,11 @@ class NotificationModel: NSObject, ObservableObject, UNUserNotificationCenterDel
         
         // Check if the notification was triggered by a user click
         if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            let _idPet = userInfo["id"] as! String
             if(userInfo["action"] as! String == "toProfile") {
-                let _idPet = userInfo["id"] as! String
-                let _redirectToProfile = true
-                
-                notifyRedirect = Redirect(idPet: _idPet, redirectToProfile:  _redirectToProfile)
+                notifyRedirect = Redirect(idPet: _idPet, redirectToProfile: true)
+            } else {
+                notifyRedirect = Redirect(idPet: _idPet, redirectToDose: true  )
             }
         }
         

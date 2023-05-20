@@ -58,8 +58,18 @@ class PetViewModel: ObservableObject {
         }
         
         if let index = result {
+            print(pets[index].weight > newWeight , pets[index].weight, newWeight, pets[index].product.count > 0)
+            if(pets[index].weight > newWeight && pets[index].product.count > 0) {
+                notificationService.sendLocalNotification(title: "\(pets[index].name) just changed her weight", subtitle: "\(pets[index].name)’s weight doesn’t match with \(pets[index].product[0].name)", action: "Update dose", petId: pets[index].id)
+                
+                pets[index].product[0].productStatus = ProductStatus(currentStatus: status.updateRequired, reason: "Your pet’s weight was changed in their pet profile, and your product needs a dose update to ensure the AutoShip is sent on time.", nexQuantity: 3)
+                
+            }
+            
             pets[index].weight = newWeight
             newWeight = ""
+            
+            
         }
     }
     

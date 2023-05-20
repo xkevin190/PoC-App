@@ -34,7 +34,7 @@ struct Notification: View {
                             
                         }).padding(.bottom)
                     }
-                }
+                }.padding(.bottom, Device.screenHeight * 0.2)
             }
         }
         .ignoresSafeArea()
