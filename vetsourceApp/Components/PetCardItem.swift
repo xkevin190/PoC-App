@@ -66,7 +66,6 @@ struct PetCardItem: View {
             }
             
         }
-        
         .frame(width: SizeScreens.ScreenWidth * 0.9)
         .frame(minHeight: SizeScreens.ScreenHeight * 0.15)
         .background(.white)

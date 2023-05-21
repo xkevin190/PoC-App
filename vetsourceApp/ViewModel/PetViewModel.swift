@@ -80,7 +80,7 @@ class PetViewModel: ObservableObject {
         var value: [PickerModel] = []
         
         pets.forEach { pet in
-            value.append(PickerModel(id: pet.id, name: pet.name))
+            value.append(PickerModel(id: pet.id, name: pet.name, image: pet.image))
         }
         
         return value
@@ -101,7 +101,7 @@ class PetViewModel: ObservableObject {
     }
     
     
-    func getPetSelected(id: UUID) -> [Product] {
+    func getPetSelected(id: UUID) -> [Product]? {
         let result = pets.firstIndex {
             $0.id == petSelected
         }
@@ -110,7 +110,7 @@ class PetViewModel: ObservableObject {
             return pets[result!].product
         }
         
-        return []
+        return nil
     }
     
     
@@ -174,6 +174,7 @@ class PetViewModel: ObservableObject {
     
     var isNecesaryFixSomething: InfoCardModel? {
         
+        print("petSelected", petSelected)
         let indexPet = pets.firstIndex { pet in
             pet.id == self.petSelected
         }
@@ -226,5 +227,19 @@ class PetViewModel: ObservableObject {
             return pets[indexPet!]
         }
         return pets[0]
+    }
+    
+    
+    func getInitialPicker (id: UUID) -> PickerModel? {
+        let indexPet = pets.firstIndex { pet in
+            pet.id.uuidString == id.uuidString
+        }
+        
+        if (indexPet != nil) {
+           let _pet = pets[indexPet!]
+            return PickerModel(id: _pet.id, name: _pet.name, image: _pet.image)
+        }
+        
+        return nil;
     }
 }

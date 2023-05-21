@@ -12,4 +12,5 @@ import Foundation
 struct PickerModel:Identifiable {
     var id: UUID
     var name: String
+    var image: String
 }

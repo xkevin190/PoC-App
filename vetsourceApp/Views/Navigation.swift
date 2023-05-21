@@ -12,6 +12,9 @@ struct Navigation: View {
     @ObservedObject var navigationModel: NavigationModel
     @ObservedObject  var notificationModel: NotificationModel
     @ObservedObject var PetModel: PetViewModel
+    @State var redirectToPrfile = false
+    @State var redirectToDose = false
+
     
     init(notifcation: NotificationModel) {
         notificationModel = notifcation
@@ -45,18 +48,40 @@ struct Navigation: View {
                 .background() {
                     NavigationLink(
                         destination: PetProfile(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
-                        isActive: $notificationModel.notifyRedirect.redirectToProfile,
+                        isActive: $redirectToPrfile,
+                        label: { EmptyView() })
+
+                    NavigationLink(
+                        destination: AutoShip(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
+                        isActive: $redirectToDose,
                         label: { EmptyView() })
                     
                     NavigationLink(
-                        destination: AutoShip(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
-                        isActive: $notificationModel.notifyRedirect.redirectToDose,
+                        destination: self),
+                        isActive: $redirectToDose,
                         label: { EmptyView() })
+
+                }
+                .onChange(of: PetModel.notificationService.notifyRedirect.redirectToDose) {newValue in
+                    print("new valueDOse", newValue)
+                    if(newValue){
+                        PetModel.petSelected = UUID(uuidString: PetModel.notificationService.notifyRedirect.idPet) ?? UUID()
+                        redirectToDose = true
+                    }
+                    
+                }
+                .onChange(of: PetModel.notificationService.notifyRedirect.redirectToProfile) {newValue in
+                    print("new prifle", newValue)
+
+                    if(newValue) {
+                        PetModel.petSelected = UUID(uuidString: PetModel.notificationService.notifyRedirect.idPet) ?? UUID()
+                        redirectToPrfile = true
+                    }
+                    
                 }
                 .frame(width: SizeScreens.ScreenWidth , height: SizeScreens.ScreenHeight * 0.8)
                 .background(.white)
                 .padding(.top, Device.screenHeight * 0.2)
-                
                 
                 ButtomTab(navigationModel: navigationModel).padding(.bottom, Device.screenHeight * 0.1).shadow(color: .black.opacity(0.3), radius: 3)
             }

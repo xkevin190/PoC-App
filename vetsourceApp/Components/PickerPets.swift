@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PickerPets: View {
-    @State var selectedStrength: String
-    let strengths = ["Mild", "Medium", "Mature"]
+    @State var selectedStrength: PickerModel
     let items: [PickerModel]
     let action: (_ value: PickerModel)-> Void
     
     
-    init(items: [PickerModel], action: @escaping (_ value: PickerModel)-> Void) {
-        self.selectedStrength = items.count > 0 ? items[0].name : "No items"
+    init(initalValue: PickerModel,  items: [PickerModel], action: @escaping (_ value: PickerModel)-> Void) {
+        print("initialValue", initalValue)
+        self._selectedStrength = State(initialValue: initalValue)
         self.items = items
         self.action = action
     }
@@ -25,29 +25,18 @@ struct PickerPets: View {
             Menu {
                 ForEach(items){ item in
                     Button(item.name) {
-                        selectedStrength = item.name
+                        selectedStrength = item
                         action(item)
                     }
                 }
                 
             } label: {
-                ZStack {
-                    Rectangle()
-                        .frame(width: Device.screenWidth * 0.4, height: Device.screenHeight * 0.045).foregroundColor(.white)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.black.opacity(0.5), lineWidth: 1)
-                        )
-                    HStack() {
-                        Text(selectedStrength).padding(.leading, 10)
-                        Spacer()
-                        ZStack{
-                            Color.gray.opacity(0.2).border(width: 1, edges: [.leading], color: .black.opacity(0.5))
-                            Image(systemName: "chevron.down")
-                        }.frame(width: Device.screenWidth * 0.1)
-                        
-                    }
-                }.frame(width: Device.screenWidth * 0.4, height: Device.screenHeight * 0.045).foregroundColor(.black)
+                VStack {
+                    Image(selectedStrength.image).resizable().frame(width: Device.screenWidth * 0.10, height: Device.screenWidth * 0.10).padding(.top)
+                }
+                .frame(width: Device.screenWidth * 0.12, height: Device.screenHeight * 0.055).foregroundColor(.white)
+                .background(.white)
+                .cornerRadius(300)
             }
         }
     }
@@ -55,6 +44,6 @@ struct PickerPets: View {
 
 struct PickerPets_Previews: PreviewProvider {
     static var previews: some View {
-        PickerPets(items: [], action: {value in })
+        PickerPets(initalValue: PickerModel(id: UUID(), name: "test", image: "dog"),  items: [], action: {value in })
     }
 }

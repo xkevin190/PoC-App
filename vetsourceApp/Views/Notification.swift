@@ -15,20 +15,21 @@ struct Notification: View {
     var body: some View {
         ZStack {
             Color.white
-           
+            
             VStack(alignment: .leading) {
                 Text("Notifications").foregroundColor(.black).padding(.horizontal).font(.largeTitle)
-
+                
                 ScrollView {
                     ForEach(notification.notify){ value in
                         NotificationCard(title: value.title,
                                          subtitle: value.descripton, button: true, titleButon: value.action, action: {
                             
-                            self.notification.notifyRedirect.idPet = value.petID.uuidString
                             if(value.action == "Go to Pet Profile") {
-                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToProfile: true)
+                                self.notification.notifyRedirect.idPet = value.petID.uuidString
+                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToProfile: true, redirectToDose: false)
                             } else {
-                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToDose: true)
+                                self.notification.notifyRedirect.idPet = value.petID.uuidString
+                                self.notification.notifyRedirect = Redirect(idPet: value.petID.uuidString, redirectToProfile: false, redirectToDose: true)
                             }
                             
                             

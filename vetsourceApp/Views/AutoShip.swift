@@ -10,49 +10,60 @@ import SwiftUI
 struct AutoShip: View {
     @EnvironmentObject var petModel: PetViewModel
     @State private var showToast = false
+    @State private var focus = false;
     var petSelected: Pet
-    
-    
-    init(petSelected: Pet) {
-        self.petSelected = petSelected
-    }
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     
     var body: some View {
         ZStack(alignment: .top) {
             Color.white
-            VStack {
-                HStack() {
-                    Text("Shopping for:").foregroundColor(Colors.subtitle)
-                    Spacer()
-                    PickerPets(items: petModel.getPickerValue(), action:  { value in
-                        
-                        petModel.petSelected = value.id
-                    })
+            Image("headerAutoShip").resizable().frame(width: Device.screenWidth * 1, height: Device.screenHeight * 0.18)
+            HStack(alignment: .center) {
+                
+                Button {
+                    mode.wrappedValue.dismiss()
+                    focus = false
+                    petModel.notificationService.notifyRedirect = Redirect(idPet: "", redirectToProfile: false, redirectToDose: false)
+                } label: {
+                    Image(systemName: "arrow.left").font(.title).foregroundColor(.white)
                 }
-                .padding(.horizontal)
-                .padding(.top, Device.screenHeight * 0.08)
+                
+                Spacer()
+                Text("AutoShip").font(.title).foregroundColor(.white)
+                Spacer()
+                if (focus) {
+                    if let initialValue = petModel.getInitialPicker(id: petSelected.id) {
+
+                        PickerPets(initalValue: initialValue,  items: petModel.getPickerValue(), action:  { value in
+                            petModel.petSelected = value.id
+                        }).offset(y: -Device.screenHeight * 0.002)
+                    }
+                }
+            }
+            .padding(.top, Device.screenHeight * 0.063)
+            .padding(.horizontal)
+            VStack {
                 VStack(alignment: .leading) {
-                    Text("AutoShip").font(.largeTitle).padding(.bottom).fontWeight(.semibold).padding(.leading).foregroundColor(.black)
                     Text("Schedule regular deliveries right to your front door. Learn more")
                         .padding(.horizontal)
                         .foregroundColor(Colors.subtitle)
                 }.padding(.top, Device.screenHeight * 0.03)
                 
-                
-                ForEach(petModel.getPetSelected(id: petSelected != nil ? petModel.pets[1].id :  petModel.pets[0].id)) { product in
-                        AutoShipCard(action: {
-                            petModel.edit.toggle()
-                            petModel.productToEdit = product.id
-
-                        }, product: product).padding()
+                if (focus) {
+                    if let values = petModel.getPet(id: petSelected.id.uuidString) {
+                        ForEach(values.product) { product in
+                            AutoShipCard(action: {
+                                petModel.edit.toggle()
+                                petModel.productToEdit = product.id
+                                
+                            }, product: product).padding()
+                        }
                     }
-                
-                
+                }
+
             }
-            .onAppear() {
-                petModel.petSelected = UUID(uuidString: petModel.notificationService.notifyRedirect.idPet) ?? petSelected.id
-            }
+            .padding(.top, Device.screenHeight * 0.18)
             .background(
                 NavigationLink(
                     destination: UpdateDose(product: petModel.getProductToEdit),
@@ -77,11 +88,13 @@ struct AutoShip: View {
         .ignoresSafeArea()
         .frame(height: SizeScreens.ScreenHeight)
         .padding(.top, Device.screenHeight * 0.04)
+        .navigationBarHidden(true)
         .onAppear(){
-            petModel.petSelected = petModel.pets[0].id
+            focus = true;
         }
-        
-        
+        .onDisappear() {
+            focus = false;
+        }
     }
 }
 

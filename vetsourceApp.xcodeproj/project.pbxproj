@@ -17,7 +17,6 @@
 		3459585D2A0926CE00995B1E /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3459585C2A0926CE00995B1E /* PetModel.swift */; };
 		3459585F2A0928B000995B1E /* PetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3459585E2A0928B000995B1E /* PetViewModel.swift */; };
 		345958612A09301700995B1E /* CardInProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958602A09301700995B1E /* CardInProfile.swift */; };
-		345958632A093E5B00995B1E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958622A093E5B00995B1E /* EditProfile.swift */; };
 		345958652A095F9D00995B1E /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958642A095F9D00995B1E /* SmallCard.swift */; };
 		345958672A09660F00995B1E /* EditSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345958662A09660F00995B1E /* EditSection.swift */; };
 		34BCDA312A04582F0078D75D /* vetsourceAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCDA302A04582F0078D75D /* vetsourceAppApp.swift */; };
@@ -59,7 +58,6 @@
 		3459585C2A0926CE00995B1E /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
 		3459585E2A0928B000995B1E /* PetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewModel.swift; sourceTree = "<group>"; };
 		345958602A09301700995B1E /* CardInProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInProfile.swift; sourceTree = "<group>"; };
-		345958622A093E5B00995B1E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		345958642A095F9D00995B1E /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCard.swift; sourceTree = "<group>"; };
 		345958662A09660F00995B1E /* EditSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSection.swift; sourceTree = "<group>"; };
 		34BCDA2D2A04582F0078D75D /* vetsourceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vetsourceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +150,6 @@
 				34BCDA4F2A04783E0078D75D /* AutoShip.swift */,
 				34BCDA512A0478B20078D75D /* Find.swift */,
 				3427B3B62A06FAFE00E29BBE /* PetProfile.swift */,
-				345958622A093E5B00995B1E /* EditProfile.swift */,
 				34DDCA562A0D79B000C34016 /* UpdateDose.swift */,
 			);
 			path = Views;
@@ -307,7 +304,6 @@
 				34FCE8E02A13F15A000E992D /* InfoCardModel.swift in Sources */,
 				34BCDA4E2A04781A0078D75D /* Notification.swift in Sources */,
 				34DDCA572A0D79B000C34016 /* UpdateDose.swift in Sources */,
-				345958632A093E5B00995B1E /* EditProfile.swift in Sources */,
 				34FCE8DE2A13BEEE000E992D /* CardInfoProfile.swift in Sources */,
 				345958612A09301700995B1E /* CardInProfile.swift in Sources */,
 				34BCDA582A0493950078D75D /* Color.swift in Sources */,

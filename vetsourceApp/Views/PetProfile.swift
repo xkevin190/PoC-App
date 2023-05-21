@@ -14,7 +14,8 @@ struct PetProfile: View {
     @State var focus: Bool = false
     @State var focusEdit: Bool = true
     @Namespace var namespace
-    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+
     
     func initialView(pet: Pet) -> some View {
         ZStack(alignment: .top) {
@@ -30,7 +31,7 @@ struct PetProfile: View {
                         .padding(.top, !focus ? Device.screenHeight * 0.4 : 0 )
                         .opacity(!focus ? 0.1 : 1)
                 
-                    CardInProfile(pet: pet, action: {
+                    CardInProfile(pet: petModel.getPet(id: pet.id.uuidString), action: {
                         withAnimation {
                             edit.toggle()
                         }
@@ -56,8 +57,22 @@ struct PetProfile: View {
             }
         }
         .ignoresSafeArea()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    withAnimation {
+                        mode.wrappedValue.dismiss()
+                        focus = false
+                        petModel.notificationService.notifyRedirect = Redirect(idPet: "", redirectToProfile: false, redirectToDose: false)
+                    }
+                } label: {
+                    Image(systemName: "arrow.left").font(.title2).foregroundColor(.white)
+                }
+            }
+        }
         .onAppear(){
-            petModel.petSelected = UUID(uuidString: petModel.notificationService.notifyRedirect.idPet) ?? petSelected!.id
+            petModel.petSelected = petModel.notificationService.notifyRedirect.idPet.count > 0 ? UUID(uuidString: petModel.notificationService.notifyRedirect.idPet)! : petSelected!.id
+            print("petSelected", petModel.petSelected)
             withAnimation(.easeInOut(duration: 0.5)) {
                 focus = true
             }
@@ -75,12 +90,7 @@ struct PetProfile: View {
                             .resizable()
                             .frame(width: Device.screenWidth * 1, height: Device.screenHeight * 0.40).padding(.top, -Device.screenHeight * 0.15)
                         
-                        SmallCard(pet: pet).onTapGesture {
-                            withAnimation {
-                                edit.toggle()
-                                focusEdit = true
-                            }
-                        }.padding(.top, Device.screenHeight * 0.14)
+                        SmallCard(petModel: petModel, pet: pet).padding(.top, Device.screenHeight * 0.14)
                     }
                     .matchedGeometryEffect(id: "profile", in: namespace)
                     
@@ -112,14 +122,23 @@ struct PetProfile: View {
                            .padding(.horizontal)
                        }.matchedGeometryEffect(id: "edits", in: namespace)
                    }
-                     
-            
                     Spacer()
                 }
                 .frame(
                     height: Device.screenHeight
                 )
-                .navigationTitle("Pet Profile ").navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            withAnimation {
+                                edit = false
+                                focusEdit = true
+                            }
+                        } label: {
+                            Image(systemName: "arrow.left").font(.title2).foregroundColor(.white)
+                        }
+                    }
+                }
                 .onAppear(){
                     withAnimation(.easeInOut(duration: 0.5)) {
                         focusEdit = false
@@ -133,9 +152,11 @@ struct PetProfile: View {
     var body: some View {
         if let pet = petSelected {
             if edit {
-                sencodView(pet: pet)
+                sencodView(pet: pet).navigationBarBackButtonHidden(true).onChange(of: pet.id) { newValue in
+                    print("newValue", newValue)
+                }
             } else {
-                initialView(pet: pet)
+                initialView(pet: pet).navigationBarBackButtonHidden(true)
             }
             
         }

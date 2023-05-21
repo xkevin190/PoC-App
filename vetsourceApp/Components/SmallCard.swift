@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SmallCard: View {
+    @ObservedObject var petModel: PetViewModel
     var pet: Pet
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
                     
-                    Text(pet.name)
+                    Text(petModel.getPet(id: pet.id.uuidString).name)
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .foregroundColor(Colors.title)
@@ -25,7 +26,7 @@ struct SmallCard: View {
                     HStack {
                         Image("cake")
                           
-                        Text(pet.age)
+                        Text(petModel.getPet(id: pet.id.uuidString).age)
                             .font(.system(size: 16))
                             .fontWeight(.regular)
                             .foregroundColor(Colors.subtitle)
@@ -42,7 +43,7 @@ struct SmallCard: View {
                 Spacer()
                 
                 VStack {
-                    Image(pet.image)
+                    Image(petModel.getPet(id: pet.id.uuidString).image)
                         .resizable()
                         .scaledToFit()
                         .frame(width: SizeScreens.ScreenWidth * 0.2, height: SizeScreens.ScreenHeight * 0.1)
@@ -65,6 +66,6 @@ struct SmallCard: View {
 
 struct SmallCard_Previews: PreviewProvider {
     static var previews: some View {
-        SmallCard(pet: Pet.preview)
+        SmallCard(petModel: PetViewModel(notification: NotificationModel()), pet: Pet.preview)
     }
 }
