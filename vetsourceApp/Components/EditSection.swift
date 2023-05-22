@@ -21,11 +21,13 @@ struct EditSection: View {
         HStack {
             
             VStack(alignment: .leading) {
-                Text(label).foregroundColor(Colors.subtitle).padding(.bottom, 5)
+                Text(label).foregroundColor(Colors.subtitle)
                 if !edit {
                     VStack {
                         Text(placeholder).foregroundColor(Colors.title)
-                    }.padding(.bottom, Device.screenHeight * 0.036)
+                    }
+                    .padding(.top, Device.screenHeight * 0.01)
+                    .padding(.bottom, Device.screenHeight * 0.036)
                 } else {
                     VStack {
                         TextField(placeholder, text: $text)
@@ -41,23 +43,46 @@ struct EditSection: View {
             }
             
             Spacer()
-            Button {
-                if(edit) {
-                    save()
+            
+            if (edit) {
+                Button {
+                    withAnimation(.linear(duration: 0.2)) {
+                        edit.toggle()
+                    }
+                } label: {
+                    HStack{
+                        Image(systemName: "checkmark" ).foregroundColor(.black)
+                        Text("Save").foregroundColor(Colors.title)
+                    }
+                    .padding(12)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
                 }
-                edit.toggle()
-            } label: {
-                HStack{
-                    Image(systemName: edit ?  "checkmark" :"pencil").foregroundColor(.black)
-                    Text( edit ? "Save" :"Edit").foregroundColor(Colors.title)
-                }
-                .padding(12)
-                .cornerRadius(5)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.black, lineWidth: 1)
-                )
+            } else {
+                Button {
+                    if(edit) {
+                        save()
+                    }
+                    withAnimation(.linear(duration: 0.2)) {
+                        edit.toggle()
+                    }
+                } label: {
+                    HStack{
+                        Image(systemName: "pencil" ).foregroundColor(.black)
+                        Text("Edit").foregroundColor(Colors.title)
+                    }
+                    .padding(12)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+                }.padding(.top, Device.screenHeight * 0.02)
             }
+            
             
         }.padding(.horizontal)
         
@@ -66,6 +91,6 @@ struct EditSection: View {
 
 struct EditSection_Previews: PreviewProvider {
     static var previews: some View {
-        EditSection(text: .constant("test"), label: "Name", placeholder: "", save: {} )
+        EditSection(text: .constant("test"), label: "Name", placeholder: "hello world", save: {} )
     }
 }
