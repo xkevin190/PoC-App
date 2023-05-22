@@ -26,7 +26,7 @@ class PetViewModel: ObservableObject {
         self.pets = Pet.setPets
         self.notificationService = notification
         
-        notificationService.sendLocalNotification(title: "Update \(pets[1].name)'s weight" , subtitle: "\(pets[1].name) is Growing fast, Update her wifht to match their orders", action: "toProfile", petId: pets[1].id)
+        notificationService.sendLocalNotification(title: "Update \(pets[1].name)'s weight" , subtitle: "\(pets[1].name) is Growing fast, Update her weight to match their orders", action: "toProfile", petId: pets[1].id)
     }
     
     

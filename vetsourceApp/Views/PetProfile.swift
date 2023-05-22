@@ -13,6 +13,7 @@ struct PetProfile: View {
     @State var edit: Bool = false
     @State var focus: Bool = false
     @State var focusEdit: Bool = true
+    @State var bound: Bool = false;
     var isNotification: Bool;
     @Namespace var namespace
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -26,11 +27,11 @@ struct PetProfile: View {
                     Image("headerProfile") .resizable().frame(height: focus ?   SizeScreens.ScreenHeight * 0.32 : SizeScreens.ScreenHeight * 0.45)
                     
                     Image(pet.image)
-                        .resizable()
-                        .frame(width: Device.screenWidth * 0.5, height: Device.screenHeight * 0.3)
+                        
                         .padding(.top, Device.screenHeight * 0.05)
-                        .padding(.top, !focus ? Device.screenHeight * 0.4 : 0 )
+                        .padding(.top, !focus ? Device.screenHeight * 0.13 : 0 )
                         .opacity(!focus ? 0.1 : 1)
+                        .offset(y: bound ? 0 : -10)
                 
                     CardInProfile(pet: petModel.getPet(id: pet.id.uuidString), action: {
                         withAnimation {
@@ -78,8 +79,12 @@ struct PetProfile: View {
             } else {
                 petModel.petSelected = petSelected!.id
             }
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 focus = true
+            }
+            
+            withAnimation(.interpolatingSpring(stiffness: 500, damping: 10, initialVelocity: 10).delay(0.3) ) {
+                bound = true
             }
         }
     }
