@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct AutoShip: View {
-    @EnvironmentObject var petModel: PetViewModel
+    @ObservedObject var petModel: PetViewModel
     @State private var showToast = false
     @State private var focus = false;
     var petSelected: Pet
+    var notification: Bool
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     
@@ -24,18 +25,19 @@ struct AutoShip: View {
                 Button {
                     mode.wrappedValue.dismiss()
                     focus = false
-                    petModel.notificationService.notifyRedirect = Redirect(idPet: "", redirectToProfile: false, redirectToDose: false)
+                    petModel.notificationService.notifyRedirect = Redirect(idPet: petSelected.id.uuidString, redirectToProfile: false, redirectToDose: false)
                 } label: {
                     Image(systemName: "arrow.left").font(.title).foregroundColor(.white)
-                }
+                }.opacity(!notification ? 0: 1 )
                 
                 Spacer()
                 Text("AutoShip").font(.title).foregroundColor(.white)
                 Spacer()
                 if (focus) {
-                    if let initialValue = petModel.getInitialPicker(id: petSelected.id) {
+                    if let initialValue = petModel.getInitialPicker(id: petModel.petSelected) {
 
                         PickerPets(initalValue: initialValue,  items: petModel.getPickerValue(), action:  { value in
+                            print("value", value.id)
                             petModel.petSelected = value.id
                         }).offset(y: -Device.screenHeight * 0.002)
                     }
@@ -50,9 +52,9 @@ struct AutoShip: View {
                         .foregroundColor(Colors.subtitle)
                 }.padding(.top, Device.screenHeight * 0.03)
                 
-                if (focus) {
-                    if let values = petModel.getPet(id: petSelected.id.uuidString) {
-                        ForEach(values.product) { product in
+                if (focus && !petModel.edit) {
+                    if let values = petModel.getPet(id: petModel.petSelected.uuidString) {
+                        ForEach(values.product, id: \.id) { product in
                             AutoShipCard(action: {
                                 petModel.edit.toggle()
                                 petModel.productToEdit = product.id
@@ -64,12 +66,9 @@ struct AutoShip: View {
 
             }
             .padding(.top, Device.screenHeight * 0.18)
-            .background(
-                NavigationLink(
-                    destination: UpdateDose(product: petModel.getProductToEdit),
-                    isActive: $petModel.edit,
-                    label: { EmptyView() })
-            )
+            .sheet(isPresented: $petModel.edit) {
+                UpdateDose(product: petModel.getProductToEdit)
+            }
             if petModel.toastShow {
                 CustomAlert(action: {
                     withAnimation {
@@ -89,7 +88,9 @@ struct AutoShip: View {
         .frame(height: SizeScreens.ScreenHeight)
         .padding(.top, Device.screenHeight * 0.04)
         .navigationBarHidden(true)
+
         .onAppear(){
+            petModel.petSelected = petSelected.id
             focus = true;
         }
         .onDisappear() {
@@ -100,6 +101,6 @@ struct AutoShip: View {
 
 struct AutoShip_Previews: PreviewProvider {
     static var previews: some View {
-        AutoShip(petSelected: Pet.preview).environmentObject(PetViewModel(notification: NotificationModel()))
+        AutoShip(petModel: PetViewModel(notification: NotificationModel()), petSelected: Pet.preview, notification: true)
     }
 }

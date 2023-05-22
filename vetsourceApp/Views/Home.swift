@@ -23,9 +23,10 @@ struct Home: View {
                 Image("titleExtra").resizable().frame(width: Device.screenWidth * 0.4, height: 40).padding(.top, -Device.screenHeight * 0.03)
                 ScrollView {
                     ForEach(petModel.pets) { pet in
-                        NavigationLink(destination: PetProfile(petSelected: pet), label: {
+                        NavigationLink(destination: PetProfile(petSelected: pet, isNotification: false), label: {
                             PetCardItem(title: pet.name, date: pet.age, orders: pet.orders, image: pet.image).padding(.top)
-                        }).environmentObject(petModel)
+                        })
+                        .environmentObject(petModel)
                     }
                 }
                 Spacer()

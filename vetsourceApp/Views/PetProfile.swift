@@ -13,6 +13,7 @@ struct PetProfile: View {
     @State var edit: Bool = false
     @State var focus: Bool = false
     @State var focusEdit: Bool = true
+    var isNotification: Bool;
     @Namespace var namespace
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
@@ -42,7 +43,7 @@ struct PetProfile: View {
                 .padding(.bottom)
 
 
-                if let fix = petModel.isNecesaryFixSomething {
+                if let fix = petModel.isNecesaryFixSomething(id: petModel.petSelected) {
                     CardInfoProfile(important: fix.important, title: fix.name, secondText: fix.incomingOrder).padding(.bottom).onTapGesture {
                         withAnimation {
                             edit.toggle()
@@ -51,7 +52,7 @@ struct PetProfile: View {
                 }
 
 
-                if let order = petModel.incomingsOrders  {
+                if let order = petModel.incomingsOrders(id: petModel.petSelected) {
                     CardInfoProfile(important: order.important, title: order.name, secondText: order.incomingOrder, third: order.date , fourth: order.time).offset(x: 0, y: !focus ? -Device.screenHeight * 0.2 : 0)
                 }
             }
@@ -63,7 +64,7 @@ struct PetProfile: View {
                     withAnimation {
                         mode.wrappedValue.dismiss()
                         focus = false
-                        petModel.notificationService.notifyRedirect = Redirect(idPet: "", redirectToProfile: false, redirectToDose: false)
+                        petModel.notificationService.notifyRedirect = Redirect(idPet: pet.id.uuidString, redirectToProfile: false, redirectToDose: false)
                     }
                 } label: {
                     Image(systemName: "arrow.left").font(.title2).foregroundColor(.white)
@@ -71,8 +72,12 @@ struct PetProfile: View {
             }
         }
         .onAppear(){
-            petModel.petSelected = petModel.notificationService.notifyRedirect.idPet.count > 0 ? UUID(uuidString: petModel.notificationService.notifyRedirect.idPet)! : petSelected!.id
-            print("petSelected", petModel.petSelected)
+            if(isNotification) {
+                petModel.petSelected = petModel.notificationService.notifyRedirect.idPet.count > 0 ? UUID(uuidString: petModel.notificationService.notifyRedirect.idPet)! : petSelected!.id
+
+            } else {
+                petModel.petSelected = petSelected!.id
+            }
             withAnimation(.easeInOut(duration: 0.5)) {
                 focus = true
             }
@@ -152,9 +157,7 @@ struct PetProfile: View {
     var body: some View {
         if let pet = petSelected {
             if edit {
-                sencodView(pet: pet).navigationBarBackButtonHidden(true).onChange(of: pet.id) { newValue in
-                    print("newValue", newValue)
-                }
+                sencodView(pet: pet).navigationBarBackButtonHidden(true)
             } else {
                 initialView(pet: pet).navigationBarBackButtonHidden(true)
             }
@@ -164,7 +167,7 @@ struct PetProfile: View {
     
     struct PetProfile_Previews: PreviewProvider {
         static var previews: some View {
-            PetProfile(petSelected: Pet(name: "Mia", age: "10/02/2018", weight: "5", orders: 3, image: "dog", product: [])).environmentObject(PetViewModel(notification: NotificationModel()))
+            PetProfile(petSelected: Pet(name: "Mia", age: "10/02/2018", weight: "5", orders: 3, image: "dog", product: []), isNotification: true).environmentObject(PetViewModel(notification: NotificationModel()))
         }
     }
 }

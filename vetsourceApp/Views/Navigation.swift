@@ -40,30 +40,25 @@ struct Navigation: View {
                     case Icons.find.rawValue:
                         Find()
                     case Icons.car.rawValue:
-                        AutoShip(petSelected: PetModel.pets[0])
+                        AutoShip(petModel: PetModel, petSelected: PetModel.pets[0], notification: false)
                     default:
                         Home()
                     }
                 }
                 .background() {
                     NavigationLink(
-                        destination: PetProfile(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
+                        destination: PetProfile(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet), isNotification: true),
                         isActive: $redirectToPrfile,
                         label: { EmptyView() })
 
                     NavigationLink(
-                        destination: AutoShip(petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet)),
+                        destination: AutoShip(petModel: PetModel, petSelected: PetModel.getPet(id: notificationModel.notifyRedirect.idPet),notification: true),
                         isActive: $redirectToDose,
                         label: { EmptyView() })
                     
-                    NavigationLink(
-                        destination: self),
-                        isActive: $redirectToDose,
-                        label: { EmptyView() })
 
                 }
                 .onChange(of: PetModel.notificationService.notifyRedirect.redirectToDose) {newValue in
-                    print("new valueDOse", newValue)
                     if(newValue){
                         PetModel.petSelected = UUID(uuidString: PetModel.notificationService.notifyRedirect.idPet) ?? UUID()
                         redirectToDose = true
@@ -71,8 +66,6 @@ struct Navigation: View {
                     
                 }
                 .onChange(of: PetModel.notificationService.notifyRedirect.redirectToProfile) {newValue in
-                    print("new prifle", newValue)
-
                     if(newValue) {
                         PetModel.petSelected = UUID(uuidString: PetModel.notificationService.notifyRedirect.idPet) ?? UUID()
                         redirectToPrfile = true

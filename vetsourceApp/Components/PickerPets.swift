@@ -14,7 +14,6 @@ struct PickerPets: View {
     
     
     init(initalValue: PickerModel,  items: [PickerModel], action: @escaping (_ value: PickerModel)-> Void) {
-        print("initialValue", initalValue)
         self._selectedStrength = State(initialValue: initalValue)
         self.items = items
         self.action = action

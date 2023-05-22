@@ -10,6 +10,7 @@ import SwiftUI
 
 class PetViewModel: ObservableObject {
     @Published var pets: [Pet] = []
+    @Published var products: [Product] = []
     @Published var newName = ""
     @Published var newAge = ""
     @Published var newWeight = ""
@@ -17,6 +18,7 @@ class PetViewModel: ObservableObject {
     @Published var edit: Bool = false;
     @Published var productToEdit = UUID()
     @Published var toastShow = false;
+    
     
     var notificationService : NotificationModel
     
@@ -155,9 +157,8 @@ class PetViewModel: ObservableObject {
                 var newPetData = _products[index!]
                 newPetData.quantity = newPetData.quantity + newPetData.productStatus.nexQuantity
                 newPetData.productStatus = ProductStatus(currentStatus: status.active, reason: "", nexQuantity: 0)
-                
-                
-                pets[result!].product[index!] = newPetData
+
+                self.pets[result!].product[index!] = newPetData
             }
             
         }
@@ -172,11 +173,11 @@ class PetViewModel: ObservableObject {
     }
     
     
-    var isNecesaryFixSomething: InfoCardModel? {
+    func isNecesaryFixSomething(id: UUID) -> InfoCardModel?   {
         
-        print("petSelected", petSelected)
+
         let indexPet = pets.firstIndex { pet in
-            pet.id == self.petSelected
+            pet.id == id
         }
         
         
@@ -199,9 +200,9 @@ class PetViewModel: ObservableObject {
     }
     
     
-    var incomingsOrders: InfoCardModel?  {
+    func incomingsOrders(id: UUID) -> InfoCardModel?  {
         let indexPet = pets.firstIndex {pet in
-            pet.id == self.petSelected
+            pet.id == id
         }
         
         
@@ -220,13 +221,14 @@ class PetViewModel: ObservableObject {
     
     
     func getPet (id: String) -> Pet {
+        
         let indexPet = pets.firstIndex {pet in
             pet.id.uuidString == id
         }
         if (indexPet != nil) {
-            return pets[indexPet!]
+            return self.pets[indexPet!]
         }
-        return pets[0]
+        return self.pets[0]
     }
     
     
